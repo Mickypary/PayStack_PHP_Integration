@@ -66,6 +66,10 @@ if (empty($first_name) || empty($last_name) || empty($phone) || empty($email)) {
 		    <label for="last-name">Last Name</label>
 		    <input type="text" id="last-name" />
 		  </div>
+		  <div class="form-group">
+		    <label for="phone-number">Phone Number</label>
+		    <input type="tel" id="phone-number" />
+		  </div>
 		  <div class="form-submit">
 		    <button type="submit" onclick="payWithPaystack()"> Pay </button>
 		  </div>
@@ -87,11 +91,12 @@ if (empty($first_name) || empty($last_name) || empty($phone) || empty($email)) {
 				    // key: 'pk_test_38ce5dbc76015bcedfa961b13c7fd9512e3b2c96', // Replace with your public key
 				    key: api, // Replace with your public key
 				    email: document.getElementById("email-address").value,
+				    phone: document.getElementById("phone-number").value,
 				    // email: "<?= $email ?>",
 				    // amount: document.getElementById("amount").value * 100,
 				    amount: <?= $amount ?> * 100,
-				    firstName: "<?= $first_name ?>",
-				    lastName: "<?= $last_name ?>",
+				    firstname: "<?= $first_name ?>",
+				    lastname: "<?= $last_name ?>",
 				    ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
 				    // label: "Optional string that replaces customer email"
 				    onClose: function(){
